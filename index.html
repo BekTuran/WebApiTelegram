@@ -117,17 +117,17 @@
             let email = document.getElementById("user_email").value;
             let phone = document.getElementById("user_phone").value;
 
-            if(name.length < 3){
+            if(name.length < 3 || name == null ){
                 document.getElementById("error").innerText = "Ошибка name";
                 return;
             }
 
-            if(email.length < 3){
+            if(email.length < 3 || email== null){
                 document.getElementById("error").innerText = "Ошибка email";
                 return;
             }
 
-            if(phone.length < 9){
+            if(phone.length < 9 || phone== null){
                 document.getElementById("error").innerText = "Ошибка номера телефона";
                 return;
             }
