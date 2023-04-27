@@ -84,10 +84,9 @@
 </head>
 <body>
     <div id = "main">
-        <input type="text" placeholder="Номер вашей карты" id="senderCardNumber">
-        <input type="text" placeholder="Номер карты получателя" id="receiptCardNumber">
-        <input type="text" placeholder="Сумма" id="amount">
-        <button id = "transfer">Перевести</button>
+        <input type="text" placeholder="Номер карты" id="cardNumber">
+        <input type="text" placeholder="Дата истечения срока" id="expiry">
+        <button id = "addCard">Добавить</button>
     </div>
     <form id="form">
         <input type="text" placeholder="Введите код отправленный на номер" id="confirmCode">
@@ -99,26 +98,24 @@
     
     <script>
         let tg = window.Telegram.WebApp;
-        let transfer = document.getElementById("transfer");
+        let addCard = document.getElementById("addCard");
         let send = document.getElementById("send");
 
         tg.expand();
  
-        transfer.addEventListener("click", () => {
+        addCard.addEventListener("click", () => {
 
             document.getElementById("main").style.display = "none";
             document.getElementById("form").style.display = "block";
 
-            let senderCard = document.getElementById("senderCardNumber").value
-            let receiptCard = document.getElementById("receiptCardNumber").value
-            let amount = document.getElementById("amount").value
+            let cardNumber = document.getElementById("cardNumber").value;
+            let expiry = document.getElementById("expiry").value;
 
             let data = {
-                action: "transaction",
-                senderCard: senderCard,
-                receiptCard: receiptCard,
-                amount: amount
-            }
+                action: "addCard",
+                cardNumber: cardNumber,
+                expiry: expiry
+            };
             tg.sendData(JSON.stringify(data));
 
         });
@@ -128,7 +125,7 @@
 
             let data = {
                 code: code
-            }
+            };
 
             tg.sendData(JSON.stringify(data));
 
