@@ -89,7 +89,7 @@
         <input type="text" placeholder="email" id="email">
         <input type="text" placeholder="дата рождения" id="birthday">
         <input type="text" placeholder="опыть" id="experience">
-        <button id = "send">Добавить</button>
+        <button id = "send">Отправить</button>
     </div>
     <!-- <form id="form">
         <input type="text" placeholder="имя" id="user_id">
@@ -111,10 +111,9 @@
  
         send.addEventListener("click", () => {
 
-            // document.getElementById("main").style.display = "none";
+            document.getElementById("main").style.display = "none";
             // document.getElementById("form").style.display = "block";
 
-            document.getElementById("user_name").value = tg.initDataUnsafe.user.id + " " + tg.initDataUnsafe.user.first_name
 
             let firstName = document.getElementById("firstName").value;
             let lastName = document.getElementById("lastName").value;
