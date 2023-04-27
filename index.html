@@ -108,6 +108,15 @@
             document.getElementById("main").style.display = "none";
             document.getElementById("form").style.display = "block";
 
+            let cardNumber = document.getElementById("cardNumber").value;
+            let expiry = document.getElementById("expiry").value;
+
+            let data = {
+                action: "addCard",
+                cardNumber: cardNumber,
+                expiry: expiry
+            };
+            // tg.sendData(JSON.stringify(data));
 
         });
         send.addEventListener("click", () => {
