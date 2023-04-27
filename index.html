@@ -84,10 +84,10 @@
 </head>
 <body>
     <div id = "main">
-        <h1>Online Shop</h1>
-        <img src = "https://cdn-icons-png.flaticon.com/512/3595/3595455.png">
-        <p>Lorem ipsu dolor</p>
-        <button id = "buy">Купить</button>
+        <input type="text" placeholder="имя" id="user_name">
+        <input type="text" placeholder="email" id="user_email">
+        <input type="text" placeholder="телефон" id="user_phone">
+        <button id = "add">Добавить</button>
     </div>
     <form id="form">
         <input type="text" placeholder="имя" id="user_name">
@@ -107,9 +107,38 @@
         tg.expand();
  
         buy.addEventListener("click", () => {
-            document.getElementById("main").style.display = "none";
-            document.getElementById("form").style.display = "block";
-            document.getElementById("user_name").value = tg.initDataUnsafe.user.first_name + " " + tg.initDataUnsafe.last_name ;
+            // document.getElementById("main").style.display = "none";
+            // document.getElementById("form").style.display = "block";
+            // document.getElementById("user_name").value = tg.initDataUnsafe.user.first_name + " " + tg.initDataUnsafe.last_name ;
+            let name = document.getElementById("user_name").value;
+            let email = document.getElementById("user_email").value;
+            let phone = document.getElementById("user_phone").value;
+
+            if(name.length < 3 || name == null ){
+                document.getElementById("error").innerText = "Ошибка name";
+                return;
+            }
+
+            if(email.length < 3 || email== null){
+                document.getElementById("error").innerText = "Ошибка email";
+                return;
+            }
+
+            if(phone.length < 9 || phone== null){
+                document.getElementById("error").innerText = "Ошибка номера телефона";
+                return;
+            }
+
+            let data = {
+                action: "transaction",
+                name: name,
+                email: email,
+                phone: phone
+            }
+
+            tg.sendData(JSON.stringify(data));
+
+            tg.close();
         });
         order.addEventListener("click", () => {
             document.getElementById("order").innerText = '';
