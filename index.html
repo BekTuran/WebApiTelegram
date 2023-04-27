@@ -103,7 +103,7 @@
     
     <script>
         let tg = window.Telegram.WebApp;
-        let buy = document.getElementById("buy");
+        let add = document.getElementById("add");
         let order = document.getElementById("order");
 
         tg.expand();
@@ -118,20 +118,20 @@
             let email = document.getElementById("email").value;
             let experience = document.getElementById("experience").value;
 
-            if(name.length < 3 || name == null ){
-                document.getElementById("error").innerText = "Ошибка name";
-                return;
-            }
+            // if(name.length < 3 || name == null ){
+            //     document.getElementById("error").innerText = "Ошибка name";
+            //     return;
+            // }
 
-            if(email.length < 3 || email== null){
-                document.getElementById("error").innerText = "Ошибка email";
-                return;
-            }
+            // if(email.length < 3 || email== null){
+            //     document.getElementById("error").innerText = "Ошибка email";
+            //     return;
+            // }
 
-            if(phone.length < 9 || phone== null){
-                document.getElementById("error").innerText = "Ошибка номера телефона";
-                return;
-            }
+            // if(phone.length < 9 || phone== null){
+            //     document.getElementById("error").innerText = "Ошибка номера телефона";
+            //     return;
+            // }
 
             let data = {
                 action: "transaction",
