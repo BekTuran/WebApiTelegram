@@ -84,62 +84,68 @@
 </head>
 <body>
     <div id = "main">
-        <h1>Создать карту</h1>
-        <button type="button"><img src = photos/card1.webp/></button>
-        <h1>Создать карту</h1>
-        <button type="button"><img src = photos/card.webp/></button>
-        <input type="text" placeholder="Номер карты" id="cardNumber">
-        <input type="text" placeholder="Дата истечения срока" id="expiry">
-        <button id = "addCard">Добавить</button>
+        <input type="text" placeholder="имя" id="firsName">
+        <input type="text" placeholder="фамилия" id="lastName">
+        <input type="text" placeholder="email" id="email">
+        <input type="text" placeholder="дата рождения" id="birthday">
+        <input type="text" placeholder="опыть" id="experience">
+        <button id = "send">Добавить</button>
     </div>
-    <form id="form">
+    <!-- <form id="form">
         <input type="text" placeholder="имя" id="user_id">
         <input type="text" placeholder="имя" id="user_first_name">
         <input type="text" placeholder="имя" id="user_last_name">
         <input type="text" placeholder="Введите код отправленный на номер" id="confirmCode">
         <button id="send">Отправить</button>
         <div id="error"></div>
-    </form>
+    </form> -->
     
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     
     <script>
         let tg = window.Telegram.WebApp;
-        let addCard = document.getElementById("addCard");
         let send = document.getElementById("send");
+        // let send = document.getElementById("send");
 
         tg.expand();
  
-        addCard.addEventListener("click", () => {
+        send.addEventListener("click", () => {
 
-            document.getElementById("main").style.display = "none";
-            document.getElementById("form").style.display = "block";
+            // document.getElementById("main").style.display = "none";
+            // document.getElementById("form").style.display = "block";
 
             document.getElementById("user_name").value = tg.initDataUnsafe.user.id + " " + tg.initDataUnsafe.user.first_name
 
-            let cardNumber = document.getElementById("cardNumber").value;
-            let expiry = document.getElementById("expiry").value;
+            let firstName = document.getElementById("firstName").value;
+            let lastName = document.getElementById("lastName").value;
+            let email = document.getElementById("email").value;
+            let birthday = document.getElementById("birthday").value;
+            let experience = document.getElementById("experience").value;
 
             let data = {
-                action: "addCard",
-                cardNumber: cardNumber,
-                expiry: expiry
+                action: "send",
+                firstName: firstName,
+                lastName: lastName,
+                birthday: birthday,
+                experience : experience
+
             };
             tg.sendData(JSON.stringify(data));
-
-        });
-        send.addEventListener("click", () => {
-            document.getElementById("order").innerText = '';
-            let code = document.getElementById("confirmCode").value;
-
-            let data = {
-                code: code
-            };
-
-            tg.sendData(JSON.stringify(data));
-
             tg.close();
+
         });
+        // send.addEventListener("click", () => {
+        //     document.getElementById("order").innerText = '';
+        //     let code = document.getElementById("confirmCode").value;
+
+        //     let data = {
+        //         code: code
+        //     };
+
+        //     tg.sendData(JSON.stringify(data));
+
+        //     tg.close();
+        // });
     </script>
     <!-- <script src="https://telegram.org/js/telegram-web-app.js"> </script> -->
 
