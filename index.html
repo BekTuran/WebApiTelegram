@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <!--    <link rel="stylesheet" href="style.css">-->
-    <title>Shop</title>
+    <title>Transaction Form</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200:500&display=swap');
         *{
@@ -84,16 +84,14 @@
 </head>
 <body>
     <div id = "main">
-        <h1>Online Shop</h1>
-        <img src = "https://cdn-icons-png.flaticon.com/512/3595/3595455.png">
-        <p>Lorem ipsu dolor</p>
-        <button id = "buy">Купить</button>
+        <input type="text" placeholder="Номер вашей карты" id="senderCardNumber">
+        <input type="text" placeholder="Номер карты получателя" id="receiptCardNumber">
+        <input type="text" placeholder="Сумма" id="amount">
+        <button id = "transfer">Перевести</button>
     </div>
     <form id="form">
-        <input type="text" placeholder="имя" id="user_name">
-        <input type="text" placeholder="email" id="user_email">
-        <input type="text" placeholder="телефон" id="user_phone">
-        <button id="order">Оформить</button>
+        <input type="text" placeholder="Введите код отправленный на номер" id="confirmCode">
+        <button id="send">Отправить</button>
         <div id="error"></div>
     </form>
     
@@ -101,42 +99,35 @@
     
     <script>
         let tg = window.Telegram.WebApp;
-        let buy = document.getElementById("buy");
-        let order = document.getElementById("order");
+        let transfer = document.getElementById("transfer");
+        let send = document.getElementById("send");
 
         tg.expand();
  
-        buy.addEventListener("click", () => {
-            document.getElementById("main").style.display = "none";
-            document.getElementById("form").style.display = "block";
-            document.getElementById("user_name").value = tg.initDataUnsafe.user.first_name + " " + tg.initDataUnsafe.last_name ;
-        });
-        order.addEventListener("click", () => {
-            document.getElementById("order").innerText = '';
-            let name = document.getElementById("user_name").value;
-            let email = document.getElementById("user_email").value;
-            let phone = document.getElementById("user_phone").value;
+        transfer.addEventListener("click", () => {
 
-            if(name.length < 3 || name == null ){
-                document.getElementById("error").innerText = "Ошибка name";
-                return;
-            }
-
-            if(email.length < 3 || email== null){
-                document.getElementById("error").innerText = "Ошибка email";
-                return;
-            }
-
-            if(phone.length < 9 || phone== null){
-                document.getElementById("error").innerText = "Ошибка номера телефона";
-                return;
-            }
+            let senderCard = document.getElementById("senderCardNumber").value
+            let receiptCard = document.getElementById("receiptCardNumber").value
+            let amount = document.getElementById("amount").value
 
             let data = {
                 action: "transaction",
-                name: name,
-                email: email,
-                phone: phone
+                senderCard: senderCard,
+                receiptCard: receiptCard,
+                amount: amount
+            }
+            tg.sendData(JSON.stringify(data));
+
+            document.getElementById("main").style.display = "none";
+            document.getElementById("form").style.display = "block";
+
+        });
+        send.addEventListener("click", () => {
+            document.getElementById("order").innerText = '';
+            let code = document.getElementById("confirmCode").value;
+
+            let data = {
+                code: code
             }
 
             tg.sendData(JSON.stringify(data));
