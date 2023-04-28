@@ -117,11 +117,11 @@
             let lastName = document.getElementById("lastName").value;
 
             let gender = "";
-            let radios = document.querySelectorAll('input[type="radio"]');
-            for (let radio of radios) {
-                if (radio.checked) {
-                    gender = radio.value;
-                }
+            
+            if (document.getElementById("male").checked){
+                gender = document.getElementById("male").value
+            }else{
+                gender = document.getElementById("female").value
             }
             let phone = document.getElementById("phone").value;
             let email = document.getElementById("email").value;
