@@ -61,7 +61,7 @@
             background: var(--tg-theme-secondary-bg-color);
         }
         
-        #gender{
+        #form{
           display: none;
           text-align: center;
         }
@@ -84,71 +84,51 @@
 </head>
 <body>
     <div id = "main">
-        <form id="Name">
-            <input type="text" placeholder="имя" id="firstName">
-            <input type="text" placeholder="фамилия" id="lastName">
-            <input type="text" placeholder="email" id="email">
-            <input type="text" placeholder="телефон" id="phone">
-            <input type="text" placeholder="опыть" id="experience">
-            <button id = "next1">Далее</button>
-        </form>
-        <form id="gender">
-            <input type="radio" id="male" name="gender" value="male">
-            <label for="male">Мужчина</label><br>
-            <input type="radio" id="female" name="gender" value="female">
-            <label for="female">Женщина</label><br>
-            <button id = "add">Добавить</button>
-        </form>
-    </div> 
+        <input type="text" placeholder="имя1" id="firstName">
+        <input type="text" placeholder="фамилия" id="lastName">
+        <input type="text" placeholder="email" id="email">
+        <input type="text" placeholder="телефон" id="phone">
+        <input type="text" placeholder="опыть" id="experience">
+        <button id = "next1">Далее</button>
+    </div>
+    <form id="form">
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Мужчина</label><br>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Женщина</label><br>
+        <button id = "add">Добавить</button>
+        <div id="error"></div>
+    </form>
     
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     
     <script>
         let tg = window.Telegram.WebApp;
-        let name = document.getElementById("Name");
-        let gender = document.getElementById("gender");
+        let next1 = document.getElementById("next1");
+        let add = document.getElementById("add");
 
         tg.expand();
-
+ 
         next1.addEventListener("click", () => {
-            
+            document.getElementById("main").style.display = "none";
+            document.getElementById("form").style.display = "block";
+        });
+        add.addEventListener("click", () => {
+            document.getElementById("add").innerText = '';
             let firstName = document.getElementById("firstName").value;
             let lastName = document.getElementById("lastName").value;
-            let phone = document.getElementById("phone").value;
-            let email = document.getElementById("email").value;
-            let experience = document.getElementById("experience").value;
-            document.getElementById("Name").style.display = "none";
-            document.getElementById("gender").style.display = "block";
-        });
-        
-        add.addEventListener("click", () => {
-            // document.getElementById("main").style.display = "none";
-            // document.getElementById("form").style.display = "block";
-            // document.getElementById("user_name").value = tg.initDataUnsafe.user.first_name + " " + tg.initDataUnsafe.last_name ;
 
             let gender = "";
-            
-            if (document.getElementById("male").checked){
+            if (document.getElementById("male").checked) {
                 gender = document.getElementById("male").value
             }else{
                 gender = document.getElementById("female").value
             }
 
-            // if(name.length < 3 || name == null ){
-            //     document.getElementById("error").innerText = "Ошибка name";
-            //     return;
-            // }
-
-            // if(email.length < 3 || email== null){
-            //     document.getElementById("error").innerText = "Ошибка email";
-            //     return;
-            // }
-
-            // if(phone.length < 9 || phone== null){
-            //     document.getElementById("error").innerText = "Ошибка номера телефона";
-            //     return;
-            // }
-
+            let phone = document.getElementById("phone").value;
+            let email = document.getElementById("email").value;
+            let experience = document.getElementById("experience").value;
+               
             let data = {
                 action: "addTutor",
                 firstName: firstName,
@@ -163,40 +143,7 @@
 
             tg.close();
         });
-        order.addEventListener("click", () => {
-            document.getElementById("order").innerText = '';
-            let name = document.getElementById("user_name").value;
-            let email = document.getElementById("user_email").value;
-            let phone = document.getElementById("user_phone").value;
-
-            if(name.length < 3 || name == null ){
-                document.getElementById("error").innerText = "Ошибка name";
-                return;
-            }
-
-            if(email.length < 3 || email== null){
-                document.getElementById("error").innerText = "Ошибка email";
-                return;
-            }
-
-            if(phone.length < 9 || phone== null){
-                document.getElementById("error").innerText = "Ошибка номера телефона";
-                return;
-            }
-
-            let data = {
-                action: "transaction",
-                name: name,
-                email: email,
-                phone: phone
-            }
-
-            tg.sendData(JSON.stringify(data));
-
-            tg.close();
-        });
     </script>
-    <!-- <script src="https://telegram.org/js/telegram-web-app.js"> </script> -->
 
 </body>
 </html>
