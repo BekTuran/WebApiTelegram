@@ -84,31 +84,38 @@
 </head>
 <body>
     <div id = "main">
-        <input type="text" placeholder="имя" id="firstName">
-        <input type="text" placeholder="фамилия" id="lastName">
-        <input type="text" placeholder="email" id="email">
-        <input type="text" placeholder="телефон" id="phone">
-        <input type="text" placeholder="опыть" id="experience">
-
-        <input type="radio" id="male" name="gender" value="male">
-        <label for="male">Мужчина</label><br>
-        <input type="radio" id="female" name="gender" value="female">
-        <label for="female">Женщина</label><br>
-        <!-- <INPUT TYPE="RADIO"  NAME="Sex" VALUE ="Man" CHECKED> мужчина        
-        <INPUT TYPE="RADIO"  NAME="Sex" VALUE ="Woman"> женщина -->
-        
-        <button id = "add">Добавить</button>
+        <form id="Name">
+            <input type="text" placeholder="имя" id="firstName">
+            <input type="text" placeholder="фамилия" id="lastName">
+            <input type="text" placeholder="email" id="email">
+            <input type="text" placeholder="телефон" id="phone">
+            <input type="text" placeholder="опыть" id="experience">
+            <button id = "next1">Далее</button>
+        </form>
+        <form id="gender">
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Мужчина</label><br>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Женщина</label><br>
+            <button id = "add">Добавить</button>
+        </form>
     </div> 
     
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     
     <script>
         let tg = window.Telegram.WebApp;
-        let add = document.getElementById("add");
-        let order = document.getElementById("order");
+        let add = document.getElementById("Name");
+        let order = document.getElementById("gender");
 
         tg.expand();
- 
+
+        next1.addEventListener("click", () => {
+            document.getElementById("main").style.display = "none";
+            document.getElementById("form").style.display = "block";
+        });
+
+        
         add.addEventListener("click", () => {
             // document.getElementById("main").style.display = "none";
             // document.getElementById("form").style.display = "block";
