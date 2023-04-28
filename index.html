@@ -84,7 +84,7 @@
 </head>
 <body>
     <div id = "main">
-        <input type="text" placeholder="имя1" id="firstName">
+        <input type="text" placeholder="имя" id="firstName">
         <input type="text" placeholder="фамилия" id="lastName">
         <input type="text" placeholder="email" id="email">
         <input type="text" placeholder="телефон" id="phone">
@@ -115,11 +115,13 @@
             // document.getElementById("user_name").value = tg.initDataUnsafe.user.first_name + " " + tg.initDataUnsafe.last_name ;
             let firstName = document.getElementById("firstName").value;
             let lastName = document.getElementById("lastName").value;
+
             let gender = "";
-            if (document.getElementById("male").value == true){
-                gender = "man";
-            }else{
-                gender = "woman";
+            let radio = document.querySelectorAll('input[type="radio"]');
+            for (let radio of radios) {
+                if (radio.checked) {
+                    gender = radio.value;
+                }
             }
             let phone = document.getElementById("phone").value;
             let email = document.getElementById("email").value;
