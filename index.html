@@ -61,7 +61,11 @@
             background: var(--tg-theme-secondary-bg-color);
         }
         
-        #form{
+        #gender{
+          display: none;
+          text-align: center;
+        }
+        #dataForm{
           display: none;
           text-align: center;
         }
@@ -91,14 +95,16 @@
         <input type="text" placeholder="опыть" id="experience">
         <button id = "next1">Далее</button>
     </div>
-    <form id="form">
+    <div id="gender">
         <input type="radio" id="male" name="gender" value="male">
         <label for="male">Мужчина</label><br>
         <input type="radio" id="female" name="gender" value="female">
         <label for="female">Женщина</label><br>
+        <button id = "next2">Далее</button>
+    </div>
 
+    <form id="dataForm">
         <input type="date" placeholder="день рождения" id="birthday">
-
         <button id = "add">Добавить</button>
         <div id="error"></div>
     </form>
@@ -108,13 +114,18 @@
     <script>
         let tg = window.Telegram.WebApp;
         let next1 = document.getElementById("next1");
+        let next2 = document.getElementById("next2");
         let add = document.getElementById("add");
 
         tg.expand();
  
         next1.addEventListener("click", () => {
             document.getElementById("main").style.display = "none";
-            document.getElementById("form").style.display = "block";
+            document.getElementById("gender").style.display = "block";
+        });
+        next2.addEventListener("click", () => {
+            document.getElementById("gender").style.display = "none";
+            document.getElementById("dataForm").style.display = "block";
         });
         add.addEventListener("click", () => {
             document.getElementById("add").innerText = '';
