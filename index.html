@@ -61,7 +61,7 @@
             background: var(--tg-theme-secondary-bg-color);
         }
         
-        #form{
+        #gender{
           display: none;
           text-align: center;
         }
@@ -105,23 +105,26 @@
     
     <script>
         let tg = window.Telegram.WebApp;
-        let add = document.getElementById("Name");
-        let order = document.getElementById("gender");
+        let name = document.getElementById("Name");
+        let gender = document.getElementById("gender");
 
         tg.expand();
 
         next1.addEventListener("click", () => {
-            document.getElementById("main").style.display = "none";
-            document.getElementById("form").style.display = "block";
+            
+            let firstName = document.getElementById("firstName").value;
+            let lastName = document.getElementById("lastName").value;
+            let phone = document.getElementById("phone").value;
+            let email = document.getElementById("email").value;
+            let experience = document.getElementById("experience").value;
+            document.getElementById("Name").style.display = "none";
+            document.getElementById("gender").style.display = "block";
         });
-
         
         add.addEventListener("click", () => {
             // document.getElementById("main").style.display = "none";
             // document.getElementById("form").style.display = "block";
             // document.getElementById("user_name").value = tg.initDataUnsafe.user.first_name + " " + tg.initDataUnsafe.last_name ;
-            let firstName = document.getElementById("firstName").value;
-            let lastName = document.getElementById("lastName").value;
 
             let gender = "";
             
@@ -130,9 +133,6 @@
             }else{
                 gender = document.getElementById("female").value
             }
-            let phone = document.getElementById("phone").value;
-            let email = document.getElementById("email").value;
-            let experience = document.getElementById("experience").value;
 
             // if(name.length < 3 || name == null ){
             //     document.getElementById("error").innerText = "Ошибка name";
