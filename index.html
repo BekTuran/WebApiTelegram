@@ -115,6 +115,7 @@
             // document.getElementById("user_name").value = tg.initDataUnsafe.user.first_name + " " + tg.initDataUnsafe.last_name ;
             let firstName = document.getElementById("firstName").value;
             let lastName = document.getElementById("lastName").value;
+            let gender = document.getElementById("gender").value;
             // let phone = document.getElementById("phone").value;
             // let email = document.getElementById("email").value;
             // let experience = document.getElementById("experience").value;
@@ -137,7 +138,8 @@
             let data = {
                 action: "addTutor",
                 firstName: firstName,
-                lastName: lastName
+                lastName: lastName,
+                gender: gender
                 // phone: phone,
                 // email: email,
                 // experience: experience
