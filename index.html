@@ -109,7 +109,7 @@
 
         tg.expand();
  
-        add.addEventListener("click", () => {
+        add.addEventListener("click", function() {
             // document.getElementById("main").style.display = "none";
             // document.getElementById("form").style.display = "block";
             // document.getElementById("user_name").value = tg.initDataUnsafe.user.first_name + " " + tg.initDataUnsafe.last_name ;
@@ -143,7 +143,7 @@
                 // phone: phone,
                 // email: email,
                 // experience: experience
-            }
+            };
 
             tg.sendData(JSON.stringify(data));
 
