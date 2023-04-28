@@ -115,8 +115,13 @@
             // document.getElementById("user_name").value = tg.initDataUnsafe.user.first_name + " " + tg.initDataUnsafe.last_name ;
             let firstName = document.getElementById("firstName").value;
             let lastName = document.getElementById("lastName").value;
-            let gender = document.getElementsByTagName("gender").value;
-            let phone = document.getElementById("phone").value;
+            let gender = "";
+            if (document.getElementById("lastName").value){
+                gender = "man";
+            }else{
+                gender = "woman";
+            }
+            let phone = document.getElementById("male").value;
             let email = document.getElementById("email").value;
             let experience = document.getElementById("experience").value;
 
