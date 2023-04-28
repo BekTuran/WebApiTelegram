@@ -83,21 +83,14 @@
     </style>
 </head>
 <body>
-    <div id = "main">
-        <input type="text" placeholder="имя" id="firstName">
-        <input type="text" placeholder="фамилия" id="lastName">
-        <input type="text" placeholder="email" id="email">
-        <input type="text" placeholder="телефон" id="phone">
-        <input type="text" placeholder="опыть" id="experience">
-        <button id = "add">Добавить</button>
+    <div class="main">
+        <form>
+            <h2 class="name">Name</h2>
+            <input class="Box" type="text" name="name">
+            <h2 class="name">Email</h2>
+            <input class="Box" type="text" name="email">
+        </form>
     </div>
-    <form id="form">
-<!--        <input type="text" placeholder="имя" id="user_name">-->
-<!--        <input type="text" placeholder="email" id="user_email">-->
-<!--        <input type="text" placeholder="телефон" id="user_phone">-->
-        <button id="order">Оформить</button>
-        <div id="error"></div>
-    </form>
     
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     
