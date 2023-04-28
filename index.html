@@ -20,7 +20,6 @@
             font-weight: 200;
             color: var(--tg-theme-text-color);
             background: var(--tg-theme-bg-color);
-            text-align: center;
         }
 
         #main{
@@ -56,7 +55,6 @@
             transition: all 500ms ease;
             color: var(--tg-theme-button-color);
             background: var(--tg-theme-button-text-color);
-            text-align: center;
         }
 
         button:hover {
@@ -85,21 +83,17 @@
     </style>
 </head>
 <body>
-    <div class="main">
-        <h2 class="name">Имя</h2>
-        <input class="Box" type="text" id="firstName">
-        <h2 class="name">Фамилия</h2>
-        <input class="Box" type="text" id="lastName">
-
+    <div id = "main">
+        <input type="text" placeholder="имя" id="firstName">
+        <input type="text" placeholder="фамилия" id="lastName">
+        <input type="text" placeholder="email" id="email">
+        <input type="text" placeholder="телефон" id="phone">
+        <input type="text" placeholder="опыть" id="experience">
+        <INPUT TYPE="RADIO"  NAME="Sex" VALUE ="Man" CHECKED> мужчина        
+        <INPUT TYPE="RADIO"  NAME="Sex" VALUE ="Woman"> женщина
         
-<!--        <INPUT TYPE="RADIO"  id="sex" VALUE ="Man" CHECKED>    -->
-<!--        <label>Мужчина</label><br>-->
-<!--        <INPUT TYPE="RADIO"  id="sex" VALUE ="Woman"> -->
-<!--        <label>Женщина</label><br>-->
-
-
         <button id = "add">Добавить</button>
-    </div>
+    </div> 
     
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     
@@ -110,16 +104,15 @@
 
         tg.expand();
  
-        add.addEventListener("click", function() {
+        add.addEventListener("click", () => {
             // document.getElementById("main").style.display = "none";
             // document.getElementById("form").style.display = "block";
             // document.getElementById("user_name").value = tg.initDataUnsafe.user.first_name + " " + tg.initDataUnsafe.last_name ;
             let firstName = document.getElementById("firstName").value;
             let lastName = document.getElementById("lastName").value;
-            let gender = document.getElementById("gender").value;
-            // let phone = document.getElementById("phone").value;
-            // let email = document.getElementById("email").value;
-            // let experience = document.getElementById("experience").value;
+            let phone = document.getElementById("phone").value;
+            let email = document.getElementById("email").value;
+            let experience = document.getElementById("experience").value;
 
             // if(name.length < 3 || name == null ){
             //     document.getElementById("error").innerText = "Ошибка name";
@@ -140,11 +133,10 @@
                 action: "addTutor",
                 firstName: firstName,
                 lastName: lastName,
-                gender: gender
-                // phone: phone,
-                // email: email,
-                // experience: experience
-            };
+                phone: phone,
+                email: email,
+                experience: experience
+            }
 
             tg.sendData(JSON.stringify(data));
 
