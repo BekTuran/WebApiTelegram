@@ -84,7 +84,7 @@
 </head>
 <body>
     <div id = "main">
-        <input type="text" placeholder="имя" id="firstName">
+        <input type="text" placeholder="имя1" id="firstName">
         <input type="text" placeholder="фамилия" id="lastName">
         <input type="text" placeholder="email" id="email">
         <input type="text" placeholder="телефон" id="phone">
@@ -116,7 +116,7 @@
             let firstName = document.getElementById("firstName").value;
             let lastName = document.getElementById("lastName").value;
             let gender = "";
-            if (document.getElementById("male").value){
+            if (document.getElementById("male").value == true){
                 gender = "man";
             }else{
                 gender = "woman";
